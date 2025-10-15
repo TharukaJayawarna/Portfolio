@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tharuka Jayawarna - Portfolio</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="https://i.imgur.com/g5gM2VT.png?v=2">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://i.imgur.com/g5gM2VT.png?v=2">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://i.imgur.com/g5gM2VT.png?v=2">
+
+    <link rel="icon" type="image/x-icon" href="https://i.imgur.com/g5gM2VT.png?v=2">
+
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --pastel-blue: #a8d5e2;
+            --dark-blue: #5a9fb8;
+            --light-blue: #d4e9f2;
+            --accent-blue: #4a90a4;
+        }
+
+        * {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f0f7fa 0%, #ffffff 50%, #e8f4f8 100%);
+            background-attachment: fixed;
+        }
+
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+        
+        /* New Styles for Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            display: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--dark-blue);
+            color: white;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            z-index: 1000;
+            transition: opacity 0.3s, transform 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .back-to-top:hover {
+            background-color: var(--accent-blue);
+            transform: scale(1.1);
+        }
+
+        .back-to-top.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .navbar-scrolled {
+            padding: 0.5rem 0;
+        }
+
+        .navbar-brand {
+            color: var(--dark-blue) !important;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .nav-link {
+            color: #555 !important;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--dark-blue) !important;
+        }
+
+        .nav-link.active {
+            color: var(--dark-blue) !important;
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 2px;
+            background: var(--dark-blue);
+        }
+
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="%235a9fb8" opacity="0.1"/></svg>');
+            animation: move 20s linear infinite;
+        }
+
+        @keyframes move {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-100px); }
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title .highlight {
+            color: var(--dark-blue);
+            position: relative;
+        }
+
+        .typing-effect {
+            border-right: 3px solid var(--dark-blue);
+            padding-right: 5px;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { border-color: var(--dark-blue); }
+            51%, 100% { border-color: transparent; }
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .btn-primary-custom {
+            background-color: var(--dark-blue);
+            border: none;
+            padding: 12px 35px;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary-custom::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.2);
+            transition: left 0.3s;
+        }
+
+        .btn-primary-custom:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary-custom:hover {
+            background-color: var(--accent-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(90, 159, 184, 0.4);
+        }
+
+        .btn-outline-custom {
+            border: 2px solid var(--dark-blue);
+            color: var(--dark-blue);
+            padding: 12px 35px;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            background: transparent;
+            transition: all 0.3s;
+        }
+
+        .btn-outline-custom:hover {
+            background-color: var(--dark-blue);
+            color: white;
+        }
+
+        .profile-photo-wrapper {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            padding: 8px;
+            background: linear-gradient(135deg, var(--pastel-blue) 0%, var(--dark-blue) 100%);
+            box-shadow: 0 20px 60px rgba(90, 159, 184, 0.4);
+            animation: float 3s ease-in-out infinite;
+            position: relative;
+        }
+
+        .profile-photo-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border-radius: 50%;
+            border: 3px solid var(--light-blue);
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .profile-photo {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+        }
+        
+        .project-image-wrapper {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .card-custom:hover .project-image {
+            transform: scale(1.1);
+        }
+
+
+        .achievement-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--pastel-blue) 0%, var(--dark-blue) 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .achievement-icon i {
+            font-size: 24px;
+            color: white;
+        }
+
+        .stat-card {
+            padding: 30px 20px;
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .stat-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--pastel-blue) 0%, var(--dark-blue) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover .stat-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .stat-icon i {
+            font-size: 36px;
+            color: white;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--dark-blue);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 0;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--dark-blue);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        .card-custom {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            height: 100%;
+            background: white;
+            overflow: hidden;
+        }
+
+        .card-custom:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            background: var(--light-blue);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .icon-box i {
+            font-size: 28px;
+            color: var(--dark-blue);
+        }
+
+        .about-section {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .about-card {
+            background: linear-gradient(135deg, var(--light-blue) 0%, white 100%);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .experience-card {
+            background: linear-gradient(135deg, var(--light-blue) 0%, white 100%);
+            border-left: 4px solid var(--dark-blue);
+        }
+
+        .skill-badge {
+            background-color: var(--light-blue);
+            color: var(--accent-blue);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 500;
+            display: inline-block;
+            margin: 5px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .skill-badge:hover {
+            background-color: var(--dark-blue);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .contact-section {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .contact-btn {
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            margin: 10px;
+            transition: all 0.3s;
+        }
+
+        .contact-btn i {
+            margin-right: 8px;
+        }
+
+        .btn-email {
+            background-color: var(--dark-blue);
+            color: white;
+            border: none;
+        }
+
+        .btn-email:hover {
+            background-color: var(--accent-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(90, 159, 184, 0.4);
+        }
+
+        .btn-linkedin {
+            background-color: #0077b5;
+            color: white;
+            border: none;
+        }
+
+        .btn-linkedin:hover {
+            background-color: #005885;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 119, 181, 0.4);
+        }
+
+        .btn-github {
+            background-color: #333;
+            color: white;
+            border: none;
+        }
+
+        .btn-github:hover {
+            background-color: #000;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .scroll-indicator {
+            text-align: center;
+            margin-top: 50px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .scroll-indicator i {
+            font-size: 32px;
+            color: var(--dark-blue);
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--light-blue);
+        }
+
+        .timeline-item {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .social-links {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+        }
+
+        .social-link {
+            display: block;
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .social-link i {
+            font-size: 20px;
+            color: var(--dark-blue);
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .profile-photo-wrapper {
+                width: 220px;
+                height: 220px;
+                margin-bottom: 30px;
+            }
+            .social-links {
+                display: none;
+            }
+            .timeline::before {
+                left: 20px;
+            }
+        }
+
+        .progress-bar-custom {
+            height: 10px;
+            border-radius: 5px;
+            background-color: var(--light-blue);
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--pastel-blue), var(--dark-blue));
+            border-radius: 5px;
+            transition: width 1s ease-in-out;
+        }
+    </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="80">
+    <button onclick="scrollToTop()" id="backToTopBtn" class="back-to-top" title="Go to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <div class="social-links d-none d-lg-block">
+        <a href="mailto:jayawarnatharuka@gmail.com" class="social-link" title="Email">
+            <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/tharuka-jayawarna-8748aa372/overlay/about-this-profile/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BbWVOTF9ZQ9KzeBrYaRgBKw%3D%3D" target="_blank" class="social-link" title="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://github.com/TharukaJayawarna" target="_blank" class="social-link" title="GitHub">
+            <i class="fab fa-github"></i>
+        </a>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container">
+            <img src="https://i.imgur.com/g5gM2VT.png" alt="Logo" width="80" height="80" class="d-inline-block align-text-top rounded-circle me-2">
+            <a class="navbar-brand" href="#home">Tharuka Jayawarna</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 text-center text-lg-start" data-aos="fade-right">
+                    <h1 class="hero-title">
+                        Hello, I'm a<br>
+                        <span class="highlight typing-effect">Trainee Software Engineer</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Final year undergraduate passionate about building innovative solutions with modern technologies
+                    </p>
+                    
+                    <div class="mt-4">
+                        <span class="skill-badge"><i class="fab fa-java me-2"></i>Java</span>
+                        <span class="skill-badge"><i class="fas fa-leaf me-2"></i>Spring Boot</span>
+                        <span class="skill-badge"><i class="fab fa-react me-2"></i>React</span>
+                        <span class="skill-badge"><i class="fab fa-node-js me-2"></i>Node.js</span>
+                        <span class="skill-badge"><i class="fas fa-database me-2"></i>MySQL</span>
+                        <span class="skill-badge"><i class="fas fa-database me-2"></i>MongoDB</span>
+                    </div>
+                    <br>
+                    <br>
+                    <div>
+                        <a href="#contact" class="btn btn-primary-custom me-2">Get in Touch</a>
+                        <a href="#experience" class="btn btn-outline-custom">View Work</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center mt-5 mt-lg-0" data-aos="fade-left">
+                    <div class="profile-photo-wrapper mx-auto">
+                        <img src="https://i.imgur.com/PNEMsFu.jpeg" alt="Tharuka Jayawarna" class="profile-photo">
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">About Me</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="about-card" data-aos="fade-up" data-aos-delay="100">
+                        <p class="lead text-center" style="color: #555; line-height: 1.8;">
+                            I am a final year undergraduate at Sri Lanka Institute of Information Technology (SLIIT), pursuing a 
+                            BSc (Hons) in Information Technology with a specialization in IT. As a Trainee Software Engineer, I work with 
+                            cutting-edge technologies including <strong>Java Spring Boot</strong>, <strong>React</strong>, <strong>Node.js</strong>, 
+                            <strong>Express.js</strong>, <strong>MySQL</strong>, <strong>MongoDB</strong>, and <strong>Docker</strong>. 
+                            I recently completed a comprehensive 6-month internship at Zerocode Software Pvt Limited, where I developed 
+                            practical skills in full-stack development, RESTful API design, and modern software engineering practices.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Education</h2>
+            <div class="row g-4">
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card card-custom p-4">
+                        <div class="icon-box">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h4 class="mb-3" style="color: #333; font-weight: bold;">BSc (Hons) Information Technology</h4>
+                        <h5 style="color: var(--dark-blue); font-weight: 600;">Sri Lanka Institute of Information Technology (SLIIT)</h5>
+                        <p class="text-muted mb-2">Specialized in Information Technology</p>
+                        <p class="text-muted mb-3">Final Year Undergraduate | Expected Graduation: 2026</p>
+                        <div>
+                            <small class="text-secondary"><i class="fas fa-star text-warning"></i> Focus: Full-Stack Development, Software Engineering</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card card-custom p-4">
+                        <div class="icon-box">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <h4 class="mb-3" style="color: #333; font-weight: bold;">G.C.E Advanced Level</h4>
+                        <h5 style="color: var(--dark-blue); font-weight: 600;">Biological Science Stream</h5>
+                        <p class="text-muted mb-2">C.W.W. Kannangara Central College, Mathugama</p>
+                        <p class="text-muted mb-3">Completed in 2020</p>
+                        <div>
+                            <small class="text-secondary"><i class="fas fa-graduation-cap text-warning"></i> Strong foundation in analytical thinking</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="about-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Professional Experience</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card card-custom experience-card p-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="d-flex align-items-start">
+                            <div class="icon-box me-3">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <div class="flex-grow-1">
+                                <h4 style="color: #333; font-weight: bold;">Trainee Software Engineer</h4>
+                                <h5 style="color: var(--dark-blue); font-weight: 600;">Zerocode Software Pvt Limited</h5>
+                                <p class="text-muted mb-3"><i class="fas fa-calendar-alt"></i> January 2025 - July 2025 (6 months)</p>
+                                <p style="color: #555; line-height: 1.7; margin-bottom: 3px;">
+                                    Completed a comprehensive 6-month internship developing enterprise-level full-stack applications. 
+                                    Gained hands-on experience in:
+                                </p>
+                                <ul style="color: #555; line-height: 1.8;">
+                                    <li>Building scalable web applications using <strong>Java Spring Boot</strong></li>
+                                    <li>Developing RESTful APIs </li>
+                                    <li>Database design and optimization with <strong>MySQL</strong></li>
+                                    <li>Containerization and deployment using <strong>Docker</strong></li>
+                                    <li>Version control with Git and collaborative development in agile teams</li>
+                                    <li>Writing clean, maintainable code following industry best practices</li>
+                                </ul>
+                                <div class="mt-3">
+                                    <span class="skill-badge">Java</span>
+                                    <span class="skill-badge">Spring Boot</span>
+                                    <span class="skill-badge">RESTful APIs</span>
+                                    <span class="skill-badge">MySQL</span>
+                                    <span class="skill-badge">Git</span>
+                                    <span class="skill-badge">Docker</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Technical Skills</h2>
+            <div class="row g-4">
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card card-custom p-4">
+                        <h4 class="mb-3" style="color: var(--dark-blue); font-weight: bold;">
+                            <i class="fas fa-server me-2"></i>Backend Development
+                        </h4>
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span>Java & Spring Boot</span>
+                                <span class="text-muted">Advanced</span>
+                            </div>
+                            <div class="progress-bar-custom">
+                                <div class="progress-fill" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span>Node.js & Express.js</span>
+                                <span class="text-muted">Advanced</span>
+                            </div>
+                            <div class="progress-bar-custom">
+                                <div class="progress-fill" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="skill-badge">Java</span>
+                            <span class="skill-badge">Spring Boot</span>
+                            <span class="skill-badge">Node.js</span>
+                            <span class="skill-badge">Express.js</span>
+                            <span class="skill-badge">RESTful APIs</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card card-custom p-4">
+                        <h4 class="mb-3" style="color: var(--dark-blue); font-weight: bold;">
+                            <i class="fas fa-laptop-code me-2"></i>Frontend Development
+                        </h4>
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span>React</span>
+                                <span class="text-muted">Advanced</span>
+                            </div>
+                            <div class="progress-bar-custom">
+                                <div class="progress-fill" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span>HTML, CSS & JavaScript</span>
+                                <span class="text-muted">Expert</span>
+                            </div>
+                            <div class="progress-bar-custom">
+                                <div class="progress-fill" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="skill-badge">React</span>
+                            <span class="skill-badge">HTML5</span>
+                            <span class="skill-badge">CSS3</span>
+                            <span class="skill-badge">JavaScript</span>
+                            <span class="skill-badge">Bootstrap</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card card-custom p-4">
+                        <h4 class="mb-3" style="color: var(--dark-blue); font-weight: bold;">
+                            <i class="fas fa-database me-2"></i>Database Management
+                        </h4>
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span>MySQL</span>
+                                <span class="text-muted">Advanced</span>
+                            </div>
+                            <div class="progress-bar-custom">
+                                <div class="progress-fill" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span>MongoDB</span>
+                                <span class="text-muted">Advanced</span>
+                            </div>
+                            <div class="progress-bar-custom">
+                                <div class="progress-fill" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="skill-badge">MySQL</span>
+                            <span class="skill-badge">MongoDB</span>
+                            <span class="skill-badge">Database Design</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card card-custom p-4">
+                        <h4 class="mb-3" style="color: var(--dark-blue); font-weight: bold;">
+                            <i class="fas fa-tools me-2"></i>DevOps & Tools
+                        </h4>
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span>Docker</span>
+                                <span class="text-muted">Intermediate</span>
+                            </div>
+                            <div class="progress-bar-custom">
+                                <div class="progress-fill" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span>Git & GitHub</span>
+                                <span class="text-muted">Advanced</span>
+                            </div>
+                            <div class="progress-bar-custom">
+                                <div class="progress-fill" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="skill-badge">Docker</span>
+                            <span class="skill-badge">Git</span>
+                            <span class="skill-badge">GitHub</span>
+                            <span class="skill-badge">Postman</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="about-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Featured Projects</h2>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card card-custom p-0 overflow-hidden">
+                        <div class="project-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1522199755839-a2bacb67c546?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max" alt="E-Commerce Platform" class="project-image">
+                        </div>
+                        <div class="p-4">
+                            <h4 style="color: #333; font-weight: bold;">E-Commerce Platform</h4>
+                            <p class="text-muted mb-3">Full-stack e-commerce application with shopping cart, payment gateway integration, and admin dashboard.</p>
+                            <div class="mb-3">
+                                <span class="skill-badge">React</span>
+                                <span class="skill-badge">Spring Boot</span>
+                                <span class="skill-badge">MySQL</span>
+                            </div>
+                            <a href="https://github.com/tharuka-jayawarna" target="_blank" class="btn btn-sm btn-primary-custom">
+                                <i class="fab fa-github me-2"></i>View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card card-custom p-0 overflow-hidden">
+                        <div class="project-image-wrapper">
+                             <img src="https://images.unsplash.com/photo-1529119368496-2dfda6ec2804?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max" alt="Task Management System" class="project-image">
+                        </div>
+                        <div class="p-4">
+                            <h4 style="color: #333; font-weight: bold;">Task Management System</h4>
+                            <p class="text-muted mb-3">Collaborative task management app with real-time updates and team collaboration features.</p>
+                            <div class="mb-3">
+                                <span class="skill-badge">Node.js</span>
+                                <span class="skill-badge">MongoDB</span>
+                                <span class="skill-badge">React</span>
+                            </div>
+                            <a href="https://github.com/tharuka-jayawarna" target="_blank" class="btn btn-sm btn-primary-custom">
+                                <i class="fab fa-github me-2"></i>View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card card-custom p-0 overflow-hidden">
+                        <div class="project-image-wrapper">
+                             <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max" alt="Hotel Reservation System" class="project-image">
+                        </div>
+                        <div class="p-4">
+                            <h4 style="color: #333; font-weight: bold;">Hotel Reservation System</h4>
+                            <p class="text-muted mb-3">Comprehensive hotel booking system with room availability and reservation management.</p>
+                            <div class="mb-3">
+                                <span class="skill-badge">Java</span>
+                                <span class="skill-badge">Spring Boot</span>
+                                <span class="skill-badge">React</span>
+                            </div>
+                            <a href="https://github.com/tharuka-jayawarna" target="_blank" class="btn btn-sm btn-primary-custom">
+                                <i class="fab fa-github me-2"></i>View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card card-custom p-0 overflow-hidden">
+                         <div class="project-image-wrapper">
+                             <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max" alt="Analytics Dashboard" class="project-image">
+                        </div>
+                        <div class="p-4">
+                            <h4 style="color: #333; font-weight: bold;">Analytics Dashboard</h4>
+                            <p class="text-muted mb-3">Interactive data visualization dashboard with real-time charts, graphs, and reporting capabilities.</p>
+                            <div class="mb-3">
+                                <span class="skill-badge">React</span>
+                                <span class="skill-badge">Node.js</span>
+                                <span class="skill-badge">MongoDB</span>
+                            </div>
+                            <a href="https://github.com/tharuka-jayawarna" target="_blank" class="btn btn-sm btn-primary-custom">
+                                <i class="fab fa-github me-2"></i>View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+                    <div class="card card-custom p-0 overflow-hidden">
+                        <div class="project-image-wrapper">
+                             <img src="https://images.unsplash.com/photo-1543168256-418b8a773633?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max" alt="Real-Time Chat Application" class="project-image">
+                        </div>
+                        <div class="p-4">
+                            <h4 style="color: #333; font-weight: bold;">Real-Time Chat Application</h4>
+                            <p class="text-muted mb-3">WebSocket-based chat application with private messaging, group chats, and file sharing features.</p>
+                            <div class="mb-3">
+                                <span class="skill-badge">Node.js</span>
+                                <span class="skill-badge">Socket.io</span>
+                                <span class="skill-badge">React</span>
+                            </div>
+                            <a href="https://github.com/tharuka-jayawarna" target="_blank" class="btn btn-sm btn-primary-custom">
+                                <i class="fab fa-github me-2"></i>View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+                    <div class="card card-custom p-0 overflow-hidden">
+                        <div class="project-image-wrapper">
+                             <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max" alt="Blog Platform" class="project-image">
+                        </div>
+                        <div class="p-4">
+                            <h4 style="color: #333; font-weight: bold;">Blog Platform</h4>
+                            <p class="text-muted mb-3">Modern blogging platform with rich text editor, comment system, and user profiles.</p>
+                            <div class="mb-3">
+                                <span class="skill-badge">Spring Boot</span>
+                                <span class="skill-badge">React</span>
+                                <span class="skill-badge">MySQL</span>
+                            </div>
+                            <a href="https://github.com/tharuka-jayawarna" target="_blank" class="btn btn-sm btn-primary-custom">
+                                <i class="fab fa-github me-2"></i>View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="row text-center g-4">
+                <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <h2 class="stat-number">20+</h2>
+                        <p class="stat-label">Projects Completed</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h2 class="stat-number">10+</h2>
+                        <p class="stat-label">Technologies Mastered</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h2 class="stat-number">6</h2>
+                        <p class="stat-label">Months Experience</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-coffee"></i>
+                        </div>
+                        <h2 class="stat-number">500+</h2>
+                        <p class="stat-label">Commits Made</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container text-center">
+            <h2 class="section-title" data-aos="fade-up">Let's Connect</h2>
+            <p class="lead mb-5" style="color: #666;" data-aos="fade-up" data-aos-delay="100">
+                I'm always open to discussing new opportunities, collaborations, and exciting projects
+            </p>
+            <div data-aos="fade-up" data-aos-delay="200">
+                <a href="mailto:jayawarnatharuka@gmail.com" class="btn contact-btn btn-email">
+                    <i class="fas fa-envelope"></i>Email Me
+                </a>
+                <a href="https://www.linkedin.com/in/tharuka-jayawarna-8748aa372/overlay/about-this-profile/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BbWVOTF9ZQ9KzeBrYaRgBKw%3D%3D" target="_blank" class="btn contact-btn btn-linkedin">
+                    <i class="fab fa-linkedin"></i>LinkedIn
+                </a>
+                <a href="https://github.com/TharukaJayawarna" target="_blank" class="btn contact-btn btn-github">
+                    <i class="fab fa-github"></i>GitHub
+                </a>
+            </div>
+            <div class="mt-5" data-aos="fade-up" data-aos-delay="300">
+                <p class="text-muted mb-2"><i class="fas fa-map-marker-alt me-2"></i>Sri Lanka</p>
+                <p class="text-muted mb-2"><i class="fas fa-briefcase me-2"></i>Available for FreeLance opportunities</p>
+                <p class="text-muted"><i class="fas fa-phone me-2"></i>+94 77 870 2002</p>
+                <p class="text-muted"><i class="fas fa-globe me-2"></i>www.tharukajayawarna.com</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    <p class="mb-0">&copy; 2025 Tharuka Jayawarna. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <a href="https://github.com/TharukaJayawarna" target="_blank" class="text-white text-decoration-none me-3">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/tharuka-jayawarna-8748aa372/overlay/about-this-profile/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BbWVOTF9ZQ9KzeBrYaRgBKw%3D%3D" target="_blank" class="text-white text-decoration-none me-3">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="mailto:jayawarnatharuka@gmail.com" class="text-white text-decoration-none">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                var target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    var navbarCollapse = document.querySelector('.navbar-collapse');
+                    if (navbarCollapse.classList.contains('show')) {
+                        var bsCollapse = new bootstrap.Collapse(navbarCollapse);
+                        bsCollapse.hide();
+                    }
+                }
+            });
+        });
+        
+        // Back to Top Button Logic
+        var backToTopBtn = document.getElementById("backToTopBtn");
+        window.onscroll = function() {
+            scrollFunction();
+        };
+        function scrollFunction() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopBtn.classList.add("show");
+            } else {
+                backToTopBtn.classList.remove("show");
+            }
+        }
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+
+        // Active nav link on scroll (Bootstrap Scrollspy handles this now, but this is a fallback)
+        window.addEventListener('scroll', function() {
+            var current = '';
+            var sections = document.querySelectorAll('section');
+            sections.forEach(function(section) {
+                var sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-link').forEach(function(link) {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Navbar scroll effect
+            var navbar = document.getElementById('mainNav');
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+            }
+        });
+        
+        // Typing effect
+        var typingText = document.querySelector('.typing-effect');
+        var text = 'Trainee Software Engineer';
+        var index = 0;
+        typingText.textContent = '';
+        
+        function type() {
+            if (index < text.length) {
+                typingText.textContent += text.charAt(index);
+                index++;
+                setTimeout(type, 100);
+            }
+        }
+
+        setTimeout(type, 500);
+    </script>
+</body>
+</html>
